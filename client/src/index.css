@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+body {
+  @apply bg-[#161925] text-white;
+}
+
+.bg-hero {
+  background-image: url("/images/hero-background.png");
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.25);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
