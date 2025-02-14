@@ -10,8 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 
 const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
-  const { endedCalls, upcomingCalls, callRecordings, isLoading } =
-    useGetCalls();
+  const { endedCalls, upcomingCalls, isLoading } = useGetCalls();
 
   const navigate = useNavigate();
 
@@ -19,8 +18,6 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
     switch (type) {
       case "ended":
         return endedCalls;
-      case "recordings":
-        return callRecordings;
       case "upcoming":
         return upcomingCalls;
       default:
@@ -32,8 +29,6 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
     switch (type) {
       case "ended":
         return "No Previous Calls";
-      case "recordings":
-        return "No Recordings";
       case "upcoming":
         return "No Upcoming Calls";
       default:
@@ -49,15 +44,11 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   return (
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
       {calls && calls.length > 0 ? (
-        calls.map((meeting: Call | CallRecording) => (
+        calls.map((meeting: Call) => (
           <MeetingCard
             key={(meeting as Call)?.id}
             icon={
-              type === "ended"
-                ? "/icons/previous.svg"
-                : type == "upcoming"
-                ? "/icons/upcoming.svg"
-                : "/icons/recordings.svg"
+              type === "ended" ? "/icons/previous.svg" : "/icons/upcoming.svg"
             }
             title={
               (meeting as Call).state?.custom?.description ||
@@ -77,16 +68,10 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
                   }`
             }
             buttonIcon1={type === "recordings" ? "/icons/play.svg" : undefined}
-            handleClick={
-              type === "recordings"
-                ? () => {
-                    window.open(meeting.url, "_blank");
-                  }
-                : () => {
-                    navigate(`/meeting/${(meeting as Call).id}`);
-                  }
-            }
-            buttonText={type === "recordings" ? "Play" : "Start"}
+            handleClick={() => {
+              navigate(`/meeting/${(meeting as Call).id}`);
+            }}
+            buttonText={"Start"}
           />
         ))
       ) : (

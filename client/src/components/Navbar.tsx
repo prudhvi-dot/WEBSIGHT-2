@@ -95,22 +95,6 @@ const Navbar = () => {
               </BootstrapTooltip>
             </NavLink>
           </li>
-          <li className="list-none">
-            <NavLink
-              to="/personal-room"
-              className={({ isActive }) =>
-                `flex items-center gap-2.5  rounded-md ${
-                  isActive ? "border border-blue-500 px-0.5 py-0.5 rounded" : ""
-                }`
-              }
-            >
-              <BootstrapTooltip title="Personal Room">
-                <Button>
-                  <img src="/icons/add-personal1.svg" alt="Personal Room" />
-                </Button>
-              </BootstrapTooltip>
-            </NavLink>
-          </li>
         </ul>
       </div>
       {/* 🔹 Authentication Section */}

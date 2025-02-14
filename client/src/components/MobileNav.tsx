@@ -57,11 +57,6 @@ const MobileNav = () => {
           { to: "/", icon: "/icons/Home.svg", text: "Home" },
           { to: "/upcoming", icon: "/icons/upcoming.svg", text: "Upcoming" },
           { to: "/previous", icon: "/icons/previous.svg", text: "Previous" },
-          {
-            to: "/personal-room",
-            icon: "/icons/add-personal.svg",
-            text: "Personal",
-          },
         ].map((item) => (
           <li key={item.to} className="list-none flex items-center w-full">
             <NavLink

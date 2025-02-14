@@ -9,7 +9,6 @@ interface MeetingCardProps {
   buttonIcon1?: string;
   buttonText?: string;
   handleClick: () => void;
-  handleDelete: () => void;
   link: string;
 }
 
@@ -28,7 +27,6 @@ const MeetingCard = ({
   isPreviousMeeting,
   buttonIcon1,
   handleClick,
-  handleDelete,
   link,
   buttonText,
 }: MeetingCardProps) => {

@@ -4,7 +4,6 @@ import Meeting from "./pages/Meeting";
 import Upcoming from "./pages/Upcoming";
 import Previous from "./pages/Previous";
 import Recordings from "./pages/Recordings";
-import PersonalRoom from "./pages/PersonalRoom";
 import ProtectedRoute from "./middlewares/ProtectedRoutes";
 import Signin from "./components/Signin";
 import StreamVideoProvider from "../providers/StreamClientProvider";
@@ -23,7 +22,6 @@ const App = () => {
             <Route path="/upcoming" element={<Upcoming />} />
             <Route path="/previous" element={<Previous />} />
             <Route path="/recordings" element={<Recordings />} />
-            <Route path="/personal-room" element={<PersonalRoom />} />
             <Route path="/meeting/:id" element={<Meeting />} />
           </Route>
         </Route>
