@@ -14,7 +14,7 @@ const StreamVideoProvider = () => {
   const { user, isLoaded } = useUser();
 
   const getToken = async (id: string): Promise<string> => {
-    const res = await fetch("http://localhost:3000/token", {
+    const res = await fetch("https://websight-2.vercel.app/token", {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Ensure the correct content type
