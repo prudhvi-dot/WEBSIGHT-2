@@ -1,3 +1,4 @@
+import CallList from "../components/CallList";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
@@ -7,9 +8,12 @@ const Upcoming = () => {
       <Navbar />
       <div className="flex">
         <Sidebar />
-        <section className="flex min-h-screen flex-1 flex-col px-6 pb-6 pt-28 max-md:pb-14 sm:px-14">
-          <section className="flx size-full flex-col gap-10 text-white">
-            <h1 className="text-3xl font-blod">Upcoming</h1>
+        <section className="flex items-center min-h-screen flex-1 flex-col px-6 bg-white pb-6 pt-18 max-md:pb-14 sm:px-14 max-md:ml-[5rem]">
+          <section className="flx size-full flex-col gap-10 text-black">
+            <h1 className="text-3xl font-blod mb-1.5 font-extrabold">
+              Upcoming
+            </h1>
+            <CallList type="upcoming" />
           </section>
         </section>
       </div>

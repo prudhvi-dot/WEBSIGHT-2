@@ -2,7 +2,7 @@
 @plugin "daisyui";
 
 body {
-  @apply bg-[#161925] text-white;
+  @apply bg-white text-black;
 }
 
 .bg-hero {

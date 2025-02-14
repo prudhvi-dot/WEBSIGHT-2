@@ -39,7 +39,7 @@ const MeetingModal: React.FC<MeetingModalProps> = ({
     <>
       {/* Modal */}
       <dialog open={isOpen} ref={modalRef} className={`modal ${className}`}>
-        <div className="modal-box  bg-[#1c1f2e]">
+        <div className="modal-box bg-white shadow-md">
           {/* Close Button */}
           <button
             type="button"
