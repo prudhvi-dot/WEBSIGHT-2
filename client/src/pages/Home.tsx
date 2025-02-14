@@ -78,8 +78,8 @@ const Home = () => {
       <Navbar />
       <div className="flex">
         <Sidebar />
-        <section className="flex items-center min-h-screen flex-1 flex-col px-6 bg-white pb-6 pt-18 max-md:pb-14 sm:px-14 max-md:ml-[5rem]">
-          <div className="h-[300px] w-full rounded-[20px] bg-hero bg-cover">
+        <section className="flex items-center min-h-screen flex-1 flex-col px-19 bg-white pb-6 pt-18 max-md:pb-14 max-sm:px-0 max-md:ml-[5rem]">
+          {/* <div className="max-sm:hidden h-[300px] w-full rounded-[20px] bg-hero bg-cover flex justify-center">
             <div className="flex h-full flex-col justify-between max-md:px-5 max-md:py-8 lg:p-11">
               <h2 className="glassmorphism max-w-[270px] rounded py-2 text-center text-base font-normal -z-10">
                 Upcoming Meeting at: 12:30 PM
@@ -94,8 +94,8 @@ const Home = () => {
                 </p>
               </div>
             </div>
-          </div>
-          <section className="mt-2.5 grid grid-cols-1 md:grid-cols-2 gap-10 xl:grid-cols-4">
+          </div> */}
+          <section className="mt-2.5 grid max-sm:grid-cols-1  gap-16 sm:grid-cols-2 lg:grid-cols-4">
             <HomeCard
               imgSrc="/icons/add-meeting.svg"
               title="New Meeting"
@@ -103,7 +103,7 @@ const Home = () => {
               handleClick={() => {
                 setMeeting("isInstantMeeting");
               }}
-              className="bg-orange-50 border border-orange-400 text-orange-500"
+              className="bg-orange-50 border border-orange-400 text-orange-500 shrink-1"
             />
             <HomeCard
               imgSrc="/icons/schedule.svg"
@@ -142,7 +142,7 @@ const Home = () => {
                     onChange={(e) => {
                       setValues({ ...values, description: e.target.value });
                     }}
-                    placeholder="Bio"
+                    placeholder="description"
                   ></textarea>
                 </div>
                 <div className="flex w-full flex-col gap-2.5">

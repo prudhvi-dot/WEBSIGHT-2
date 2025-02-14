@@ -9,12 +9,14 @@ import {
   useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 import { useState } from "react";
+import Tooltip from "@mui/material/Tooltip";
 
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import GroupIcon from "@mui/icons-material/Group";
 import { useParams } from "react-router-dom";
 import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
+import { Button } from "@mui/material";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
@@ -25,7 +27,7 @@ const MeetingRoom = () => {
 
   const [layout, setLayout] = useState<CallLayoutType>("speaker-left");
 
-  const [showParticipents, setshowParticipents] = useState(true);
+  const [showParticipents, setshowParticipents] = useState(false);
 
   const call = useCall();
 
@@ -66,7 +68,11 @@ const MeetingRoom = () => {
         <CallControls />
 
         <div className="dropdown dropdown-top dropdown-center">
-          <div tabIndex={0} role="button" className="btn m-1 bg-transparent">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 bg-transparent text-black"
+          >
             <FormatListBulletedIcon />
           </div>
           <ul
@@ -88,13 +94,12 @@ const MeetingRoom = () => {
           </ul>
         </div>
         <CallStatsButton />
-        <button
-          className="cursor-pointer"
-          onClick={() => setshowParticipents((prev) => !prev)}
-          type="button"
-        >
-          <GroupIcon />
-        </button>
+
+        <Tooltip title="All Participants" placement="top">
+          <Button onClick={() => setshowParticipents((prev) => !prev)}>
+            <GroupIcon className="text-black cursor-pointer" />
+          </Button>
+        </Tooltip>
 
         {!isPersonalRoom && <EndCallButton />}
       </div>

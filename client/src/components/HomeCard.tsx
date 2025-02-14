@@ -15,7 +15,7 @@ const HomeCard = ({
 }: HomeCardProps) => {
   return (
     <div
-      className={`${className} px-4 py-6 flex flex-col justify-between w-[250px] min-h-[180px] rounded-[14px] cursor-pointer`}
+      className={`${className} px-4 py-6 flex flex-col justify-between w-[230px] min-h-[180px] rounded-[14px] cursor-pointer`}
       onClick={handleClick}
     >
       <div className="flex items-center justify-center glassmorphism size-12 rounded-[10px]">
