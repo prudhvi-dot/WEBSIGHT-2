@@ -1,8 +1,6 @@
 import {
-  CallControls,
   CallingState,
   CallParticipantsList,
-  CallStatsButton,
   PaginatedGridLayout,
   SpeakerLayout,
   useCall,
@@ -11,6 +9,8 @@ import {
 import { useEffect, useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 
+import { CallControls } from "./CallControlls";
+
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import GroupIcon from "@mui/icons-material/Group";
 import { useParams } from "react-router-dom";
@@ -18,6 +18,7 @@ import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
 import { Button } from "@mui/material";
 import { toast } from "react-toastify";
+import CancleCall from "./CancleCall";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
@@ -76,6 +77,7 @@ const MeetingRoom = () => {
 
       <div className="fixed bottom-0 flex flex-wrap w-full items-center justify-center gap-5">
         <CallControls />
+        <CancleCall />
 
         <div className="dropdown dropdown-top dropdown-center">
           <div

@@ -1,6 +1,6 @@
-import { useCall, useCallStateHooks } from "@stream-io/video-react-sdk";
+import { useCall } from "@stream-io/video-react-sdk";
 import { styled } from "@mui/material/styles";
-import Button, { ButtonProps } from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Tooltip from "@mui/material/Tooltip";
 import CallEndIcon from "@mui/icons-material/CallEnd";
@@ -15,6 +15,7 @@ const BootstrapButton = styled(Button)({
   border: "1px solid",
   lineHeight: 1.5,
   backgroundColor: "#dc2626",
+  borderRadius: "100%",
   borderColor: "#dc2626",
   fontFamily: [
     "-apple-system",
@@ -43,31 +44,19 @@ const BootstrapButton = styled(Button)({
   },
 });
 
-const EndCallButton = () => {
+const CancleCall = () => {
   const call = useCall();
 
   const navigate = useNavigate();
 
-  const { useLocalParticipant } = useCallStateHooks();
-
-  const localParticipant = useLocalParticipant();
-
-  const isMeetingOwner =
-    localParticipant &&
-    call?.state.createdBy &&
-    localParticipant.userId === call.state.createdBy.id;
-
-  if (!isMeetingOwner) {
-    return null;
-  }
   return (
     <Stack spacing={2} direction="row">
-      <Tooltip title="End call for everyone" placement="top">
+      <Tooltip title="Leave Call" placement="top">
         <BootstrapButton
           onClick={async () => {
-            await call.camera.disable();
-            await call.microphone.disable();
-            await call.endCall();
+            await call?.camera.disable();
+            await call?.microphone.disable();
+            await call?.leave();
             navigate("/");
           }}
           variant="contained"
@@ -80,4 +69,4 @@ const EndCallButton = () => {
   );
 };
 
-export default EndCallButton;
+export default CancleCall;
