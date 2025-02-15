@@ -37,16 +37,22 @@ const Recordings = () => {
         <Sidebar />
         <section className="flex items-center min-h-screen flex-1 flex-col px-6 bg-white pb-6 pt-18 max-md:pb-14 sm:px-14 max-md:ml-[5rem]">
           <section className="flx size-full flex-col gap-10 text-black">
-            <h1 className="text-3xl font-blod">Recordings</h1>
+            <h1 className="text-3xl font-blod mb-1.5 font-extrabold">
+              Recordings
+            </h1>
 
-            <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
               {recordings.length > 0 ? (
                 recordings.map((recording: CallRecording, index) => (
                   <MeetingCard
                     key={index}
                     icon={"/icons/recordings.svg"}
                     title={recording.filename.substring(0, 20)}
-                    date={recording.start_time?.toLocaleString()}
+                    date={
+                      recording.start_time
+                        ? new Date(recording.start_time).toLocaleString()
+                        : "N/A"
+                    }
                     link={recording.url}
                     buttonIcon1="/icons/play.svg"
                     buttonText="play"

@@ -8,7 +8,7 @@ import {
   useCall,
   useCallStateHooks,
 } from "@stream-io/video-react-sdk";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
@@ -17,11 +17,14 @@ import { useParams } from "react-router-dom";
 import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
 import { Button } from "@mui/material";
+import { toast } from "react-toastify";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
 const MeetingRoom = () => {
   const { personal } = useParams();
+
+  const [link, setLink] = useState("");
 
   const isPersonalRoom = !!personal;
 
@@ -38,6 +41,12 @@ const MeetingRoom = () => {
     <Loader />;
   }
 
+  useEffect(() => {
+    const url = window.location.href;
+
+    setLink(url);
+  }, []);
+
   const CallLayout = () => {
     switch (layout) {
       case "grid":
@@ -50,8 +59,8 @@ const MeetingRoom = () => {
   };
   return (
     <section className="relative h-screen w-full overflow-hidden pt-4 text-white">
-      <div className="relative  flex size-full items-center justify-center">
-        <div className="flex size-full md:w-[50%] md:h-[50%]  items-center justify-center">
+      <div className=" flex  size-full items-center justify-center">
+        <div className="flex size-full relative md:w-[50%] md:h-[60%]  items-center justify-center">
           <CallLayout />
         </div>
 
@@ -64,6 +73,7 @@ const MeetingRoom = () => {
           <CallParticipantsList onClose={() => setshowParticipents(false)} />
         </div>
       </div>
+
       <div className="fixed bottom-0 flex flex-wrap w-full items-center justify-center gap-5">
         <CallControls />
 
@@ -93,7 +103,15 @@ const MeetingRoom = () => {
             ))}
           </ul>
         </div>
-        <CallStatsButton />
+        <button
+          onClick={() => {
+            toast.success("link copied");
+            navigator.clipboard.writeText(link);
+          }}
+          className="cursor-pointer"
+        >
+          <img src="/icons/copyLink.svg" alt="" />
+        </button>
 
         <Tooltip title="All Participants" placement="top">
           <Button onClick={() => setshowParticipents((prev) => !prev)}>

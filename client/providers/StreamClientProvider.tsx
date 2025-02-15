@@ -28,7 +28,6 @@ const StreamVideoProvider = () => {
     }
 
     const body = await res.json();
-    console.log("Token received:", body.token);
     return body.token;
   };
 
