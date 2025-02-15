@@ -20,7 +20,6 @@ const MeetingModal: React.FC<MeetingModalProps> = ({
   children,
   handleClick,
   buttonText = "Close",
-  buttonIcon,
   image,
 }) => {
   const modalRef = useRef<HTMLDialogElement>(null);

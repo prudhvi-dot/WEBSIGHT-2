@@ -13,7 +13,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const Home = () => {
   const [meeting, setMeeting] = useState<
     "isScheduleMeeting" | "isJoiningMeeting" | "isInstantMeeting" | undefined
-  >();
+  >(undefined);
   const now = new Date();
   const time = now.toLocaleTimeString("en-IN", {
     hour: "2-digit",
@@ -166,7 +166,10 @@ const Home = () => {
             ) : (
               <MeetingModal
                 isOpen={meeting === "isScheduleMeeting"}
-                onClose={() => setMeeting(undefined)}
+                onClose={() => {
+                  setMeeting(undefined);
+                  setCallDetails(undefined);
+                }}
                 title="Meeting Created"
                 buttonText="Copy Meeting Link"
                 handleClick={() => {
